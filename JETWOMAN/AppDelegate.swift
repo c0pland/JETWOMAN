@@ -20,5 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
     
-    
+	@IBAction func resetHighScoreClicked(_ sender: Any) {
+		
+	}
+	
 }
