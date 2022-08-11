@@ -1,63 +1,29 @@
-//
-//  GameScene.swift
-//  JETWOMAN
-//
-//  Created by Богдан Беннер on 09.08.2022.
-//
-
 import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-	
 	private var scoreLabel : SKLabelNode?
 	private var highScoreLabel : SKLabelNode?
 	private var jetwoman: SKSpriteNode?
-	private var spinnyNode : SKShapeNode?
 	private var startButton: SKSpriteNode?
+	private var score = 0
 	
 	override func didMove(to view: SKView) {
 		self.jetwoman = self.childNode(withName: Consts.jetwoman) as? SKSpriteNode
 		self.startButton = self.childNode(withName: Consts.startButton) as? SKSpriteNode
+		self.scoreLabel = self.childNode(withName: Consts.score) as? SKLabelNode
+		self.highScoreLabel = self.childNode(withName: Consts.highScore) as? SKLabelNode
 		self.physicsWorld.contactDelegate = self
-	}
-	
-	
-	func touchDown(atPoint pos : CGPoint) {
-		if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-			n.position = pos
-			n.strokeColor = SKColor.green
-			self.addChild(n)
-		}
-	}
-	
-	func touchMoved(toPoint pos : CGPoint) {
-		if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-			n.position = pos
-			n.strokeColor = SKColor.blue
-			self.addChild(n)
-		}
-	}
-	
-	func touchUp(atPoint pos : CGPoint) {
-		if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-			n.position = pos
-			n.strokeColor = SKColor.red
-			self.addChild(n)
-		}
+		scoreLabel?.text = "Score: \(score)"
 	}
 	
 	override func mouseDown(with event: NSEvent) {
-		self.touchDown(atPoint: event.location(in: self))
 		let pointClicked = event.location(in: self)
 		let nodesAtPoint = nodes(at: pointClicked)
 		for node in nodesAtPoint {
 			if node.name == Consts.startButton {
 				print("START")
-				if let jetwoman = jetwoman {
-					jetwoman.physicsBody?.pinned = false
-					startButton?.removeFromParent()
-				}
+				startGame()
 			}
 		}
 	}
@@ -67,15 +33,27 @@ class GameScene: SKScene {
 		case 0x31:
 			if let jetwoman = jetwoman {
 				jetwoman.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 100))
+				score += 1
+				scoreLabel?.text = "Score: \(score)"
 			}
 		default:
 			print("keyDown: \(event.characters!) keyCode: \(event.keyCode)")
 		}
 	}
 	
-	
 	override func update(_ currentTime: TimeInterval) {
 		// Called before each frame is rendered
+	}
+	
+	func startGame() {
+		if let jetwoman = jetwoman {
+			jetwoman.position = CGPoint(x: 0,y: 0)
+			jetwoman.physicsBody?.pinned = false
+			startButton?.removeFromParent()
+			score = 0
+			scoreLabel?.text = "Score: \(score)"
+			
+		}
 	}
 }
 
