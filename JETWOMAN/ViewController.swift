@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  JETWOMAN
-//
-//  Created by Богдан Беннер on 09.08.2022.
-//
-
 import Cocoa
 import SpriteKit
 import GameplayKit
@@ -33,4 +26,3 @@ class ViewController: NSViewController {
         }
     }
 }
-

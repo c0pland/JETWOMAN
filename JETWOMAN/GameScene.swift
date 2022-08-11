@@ -16,23 +16,8 @@ class GameScene: SKScene {
     private var spinnyNode : SKShapeNode?
     
     override func didMove(to view: SKView) {
-        
-        // Get label node from scene and store it for use later
 		self.jetwoman = self.childNode(withName: Consts.jetwoman) as? SKSpriteNode
-		
-        
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
-        
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
-            
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
+		self.physicsWorld.contactDelegate = self
     }
     
     
@@ -87,4 +72,14 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
     }
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+	func didBegin(_ contact: SKPhysicsContact) {
+		print("Contact")
+		if contact.bodyA.categoryBitMask == Consts.spikesCategoryMask || contact.bodyB.categoryBitMask == Consts.spikesCategoryMask {
+			// GAME OVER
+			print("GAME OVER")
+		}
+	}
 }
