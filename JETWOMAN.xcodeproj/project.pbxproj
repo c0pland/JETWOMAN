@@ -15,6 +15,7 @@
 		22597FBA28A296550010974B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22597FB928A296550010974B /* ViewController.swift */; };
 		22597FBC28A2965A0010974B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22597FBB28A2965A0010974B /* Assets.xcassets */; };
 		22597FBF28A2965A0010974B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22597FBD28A2965A0010974B /* Main.storyboard */; };
+		22DA53C628AA21E5002AE236 /* Keycodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA53C528AA21E5002AE236 /* Keycodes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		22597FBB28A2965A0010974B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22597FBE28A2965A0010974B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22597FC028A2965A0010974B /* JETWOMAN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JETWOMAN.entitlements; sourceTree = "<group>"; };
+		22DA53C528AA21E5002AE236 /* Keycodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keycodes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				22597FB328A296550010974B /* GameScene.sks */,
 				22597FB528A296550010974B /* Actions.sks */,
 				22597FB728A296550010974B /* GameScene.swift */,
+				22DA53C528AA21E5002AE236 /* Keycodes.swift */,
 				2206243D28A3ECF7009C3AEF /* Consts.swift */,
 				22597FB928A296550010974B /* ViewController.swift */,
 				22597FBB28A2965A0010974B /* Assets.xcassets */,
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22DA53C628AA21E5002AE236 /* Keycodes.swift in Sources */,
 				22597FBA28A296550010974B /* ViewController.swift in Sources */,
 				2206243E28A3ECF7009C3AEF /* Consts.swift in Sources */,
 				22597FB828A296550010974B /* GameScene.swift in Sources */,
