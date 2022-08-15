@@ -20,6 +20,7 @@ class GameScene: SKScene {
 		self.physicsWorld.contactDelegate = self
 		self.symbolLabel?.isHidden = true
 		scoreLabel?.text = "Score: \(score)"
+		updateHighScore()
 	}
 	
 	override func mouseDown(with event: NSEvent) {
@@ -38,7 +39,7 @@ class GameScene: SKScene {
 			switch event.keyCode {
 			case characterKeycodes[currentCharacter]:
 				if let jetwoman = jetwoman {
-					jetwoman.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 300))
+					jetwoman.physicsBody?.applyImpulse(CGVector(dx: 0, dy: (300 - score * Consts.difficultyCoefficient)))
 					score += 1
 					chooseNextKey()
 					scoreLabel?.text = "Score: \(score)"
@@ -71,6 +72,11 @@ class GameScene: SKScene {
 			symbolLabel.text = currentCharacter
 		}
 	}
+	
+	func updateHighScore () {
+		let highScore = UserDefaults.standard.integer(forKey: "highScore")
+		highScoreLabel?.text = "Hi Score: \(highScore)"
+	}
 }
 
 extension GameScene: SKPhysicsContactDelegate {
@@ -82,6 +88,15 @@ extension GameScene: SKPhysicsContactDelegate {
 			if let startButton = self.startButton {
 				if startButton.parent != self {
 					addChild(startButton)
+					currentCharacter = nil
+					symbolLabel?.isHidden = true
+				}
+				// Check for high score
+				let highScore = UserDefaults.standard.integer(forKey: "highScore")
+				if score > highScore {
+					UserDefaults.standard.set(score, forKey: "highScore")
+					UserDefaults.standard.synchronize()
+					highScoreLabel?.text = "Hi Score: \(score)"
 				}
 			}
 		}

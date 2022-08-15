@@ -8,4 +8,5 @@ struct Consts {
 	static var spikesCategoryMask: UInt32 = 3
 	static var startButton = "startButton"
 	static var symbolLabel = "symbolLabel"
+	static var difficultyCoefficient = 3
 }
