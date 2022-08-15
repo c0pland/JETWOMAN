@@ -16,6 +16,8 @@
 		22597FBC28A2965A0010974B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22597FBB28A2965A0010974B /* Assets.xcassets */; };
 		22597FBF28A2965A0010974B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22597FBD28A2965A0010974B /* Main.storyboard */; };
 		22DA53C628AA21E5002AE236 /* Keycodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA53C528AA21E5002AE236 /* Keycodes.swift */; };
+		22DA53C928AA9497002AE236 /* CrashFire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 22DA53C728AA9497002AE236 /* CrashFire.sks */; };
+		22DA53CA28AA9497002AE236 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22DA53C828AA9497002AE236 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		22597FBE28A2965A0010974B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22597FC028A2965A0010974B /* JETWOMAN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JETWOMAN.entitlements; sourceTree = "<group>"; };
 		22DA53C528AA21E5002AE236 /* Keycodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keycodes.swift; sourceTree = "<group>"; };
+		22DA53C728AA9497002AE236 /* CrashFire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CrashFire.sks; sourceTree = "<group>"; };
+		22DA53C828AA9497002AE236 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 		22597FB028A296550010974B /* JETWOMAN */ = {
 			isa = PBXGroup;
 			children = (
+				22DA53C828AA9497002AE236 /* Assets.xcassets */,
+				22DA53C728AA9497002AE236 /* CrashFire.sks */,
 				22597FB128A296550010974B /* AppDelegate.swift */,
 				22597FB328A296550010974B /* GameScene.sks */,
 				22597FB528A296550010974B /* Actions.sks */,
@@ -136,7 +142,9 @@
 			files = (
 				22597FB428A296550010974B /* GameScene.sks in Resources */,
 				22597FBC28A2965A0010974B /* Assets.xcassets in Resources */,
+				22DA53C928AA9497002AE236 /* CrashFire.sks in Resources */,
 				22597FB628A296550010974B /* Actions.sks in Resources */,
+				22DA53CA28AA9497002AE236 /* Assets.xcassets in Resources */,
 				22597FBF28A2965A0010974B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -2,6 +2,8 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
+	private var crashFireReference: SKNode?
+	private var gameOverSprite: SKSpriteNode?
 	private var symbolLabel: SKLabelNode?
 	private var scoreLabel : SKLabelNode?
 	private var highScoreLabel : SKLabelNode?
@@ -12,8 +14,13 @@ class GameScene: SKScene {
 	private let characterKeycodes = ["A": Keycode.a, "B": Keycode.b, "C": Keycode.c, "D": Keycode.d, "E": Keycode.e, "F": Keycode.f, "G": Keycode.g, "H": Keycode.h, "I": Keycode.i, "J": Keycode.j, "K": Keycode.k, "L": Keycode.l, "M": Keycode.m, "N": Keycode.o, "P": Keycode.p, "Q": Keycode.q, "R": Keycode.r, "S": Keycode.s, "T": Keycode.t, "U": Keycode.u, "V": Keycode.v, "W": Keycode.w, "X": Keycode.x, "y": Keycode.y, "Z": Keycode.z, "0": Keycode.zero, "1": Keycode.one, "2": Keycode.two, "3": Keycode.three, "4": Keycode.four, "5": Keycode.five, "6": Keycode.six, "7": Keycode.seven, "8": Keycode.eight, "9": Keycode.nine]
 	
 	override func didMove(to view: SKView) {
+		self.crashFireReference = self.childNode(withName: Consts.crashFireReference) as? SKNode
+		crashFireReference?.isHidden = true
+		self.gameOverSprite = self.childNode(withName: Consts.gameOverSprite) as? SKSpriteNode
+		gameOverSprite?.isHidden = true
 		self.symbolLabel = self.childNode(withName: Consts.symbolLabel) as? SKLabelNode
 		self.jetwoman = self.childNode(withName: Consts.jetwoman) as? SKSpriteNode
+		self.jetwoman?.isHidden = true
 		self.startButton = self.childNode(withName: Consts.startButton) as? SKSpriteNode
 		self.scoreLabel = self.childNode(withName: Consts.score) as? SKLabelNode
 		self.highScoreLabel = self.childNode(withName: Consts.highScore) as? SKLabelNode
@@ -39,7 +46,7 @@ class GameScene: SKScene {
 			switch event.keyCode {
 			case characterKeycodes[currentCharacter]:
 				if let jetwoman = jetwoman {
-					jetwoman.physicsBody?.applyImpulse(CGVector(dx: 0, dy: (300 - score * Consts.difficultyCoefficient)))
+					jetwoman.physicsBody?.applyImpulse(CGVector(dx: 0, dy: (200 - score * Consts.difficultyCoefficient)))
 					score += 1
 					chooseNextKey()
 					scoreLabel?.text = "Score: \(score)"
@@ -56,13 +63,17 @@ class GameScene: SKScene {
 	
 	func startGame() {
 		if let jetwoman = jetwoman {
-			jetwoman.position = CGPoint(x: 0,y: 0)
+			crashFireReference?.isHidden = true
+			gameOverSprite?.isHidden = true
+			jetwoman.position = CGPoint(x: 0,y: 130)
+			jetwoman.isHidden = false
 			jetwoman.physicsBody?.pinned = false
 			startButton?.removeFromParent()
 			score = 0
 			scoreLabel?.text = "Score: \(score)"
 			symbolLabel?.isHidden = false
 			chooseNextKey()
+			jetwoman.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 100)) // Initial boost
 		}
 	}
 	
@@ -100,5 +111,7 @@ extension GameScene: SKPhysicsContactDelegate {
 				}
 			}
 		}
+		gameOverSprite?.isHidden = false
+		crashFireReference?.isHidden = false
 	}
 }

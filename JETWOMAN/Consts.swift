@@ -9,4 +9,6 @@ struct Consts {
 	static var startButton = "startButton"
 	static var symbolLabel = "symbolLabel"
 	static var difficultyCoefficient = 3
+	static var gameOverSprite = "gameOverSprite"
+	static var crashFireReference = "crashFireReference"
 }
